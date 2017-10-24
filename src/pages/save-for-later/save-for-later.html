@@ -1,0 +1,76 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Previous Results</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+
+  <ion-grid>
+  <ion-row>
+   
+    <ion-col xl>
+    
+     <div align="center">
+      <img src="assets/image.jpg">
+    </div>
+    
+    </ion-col>
+   
+  </ion-row>
+
+<ion-row>
+    <ion-col xl>
+
+<ion-scroll style="width:100%;height:65vh" scrollY="true">
+<ion-list>
+<ion-item-sliding *ngFor="let saved of savedArr; let i=index" >
+  
+  <ion-item nopadding (click)="pushDispalySavedPage(saved.rowid)">
+          <p>
+            <span>{{saved.name}}</span>
+            <br>
+            - {{saved.moisture}}% -
+            {{saved.temperature}}&#176;C
+          </p>
+          <br>
+          <h3 item-end>{{saved.time}}</h3>
+      </ion-item>
+      <ion-item-options side="right">
+
+        <button ion-button color="danger" (click)="deleteData(saved.rowid)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+        <button ion-button  (click)="ShareResults(i)" color="primary">
+            <ion-icon name="share"></ion-icon>
+            Share
+        </button>
+      </ion-item-options>
+</ion-item-sliding>
+
+</ion-list>
+</ion-scroll>
+
+  </ion-col> 
+  </ion-row>
+
+
+</ion-grid>
+
+
+  
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <button  ion-button large full (click)="PushToHomePage()" >Receive a new result</button>
+  </ion-toolbar>
+</ion-footer>

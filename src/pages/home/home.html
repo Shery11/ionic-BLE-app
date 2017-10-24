@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Welcome</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="scan()">
+        Scan
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+
+
+  <ion-grid>
+  <ion-row>
+
+
+   
+    <ion-col xl>
+     <div align="center">
+      <img src="assets/image.jpg">
+    </div>
+    
+    </ion-col>
+   
+  </ion-row>
+
+
+
+  <ion-row>
+    <ion-col xl>
+         <h1 align="center">Select your meter</h1>
+     </ion-col> 
+  </ion-row>
+
+
+ 
+ <ion-row>
+  <ion-col xl>
+
+  <ion-scroll style="width:100%;height:50vh" scrollY="true">
+  <ion-list padding [virtualScroll]=devices>
+  <!--  <ion-item ion-item *ngFor="let device of devices" (click)="deviceSelected(device)"> -->
+  <ion-item *virtualItem="let device" (click)="deviceSelected(device)">
+      <h2>{{ device.name || 'Unnamed' }}</h2>
+      <p>{{ device.id }}</p>
+      <p>RSSI: {{device.rssi}}</p>
+  </ion-item>
+
+   </ion-list>
+ </ion-scroll>
+  </ion-col>
+</ion-row>
+
+
+
+</ion-grid>
+
+
+</ion-content>
+
+
+<ion-footer>
+
+  <ion-toolbar>
+    <button  ion-button large full (click)="PushToSavePage()">Previous Results</button>
+  
+    <p align="center">{{ statusMessage }}</p>
+  </ion-toolbar>
+
+</ion-footer>

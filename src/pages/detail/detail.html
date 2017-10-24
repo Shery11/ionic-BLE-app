@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ peripheral.name || 'Device' }} Results</ion-title>
+  <!--  <ion-buttons end>
+      <button ion-button color="primary" (click)="share()">Share
+        <ion-icon name="paper"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="padding">
+
+  <div *ngIf="arr?.length === 0">
+    <img src="assets/image.jpg" style="  display: block;
+    margin: auto !important;"> <br>
+
+    <h1 style="text-align:center;display: block;
+    margin: auto !important;">Waiting for result .....</h1>
+  </div>
+  <div *ngIf="arr?.length > 0">
+  <img src="assets/image.jpg" style="  display: block;
+  margin: auto !important;"> <br>
+ <!--  <ion-card class="left">
+      <h1 style="font-size: 2.8em;"> {{Name}}</h1><br>
+      <p style="font-weight:bold;font-size: 2.5em;">Moisture </p><br>
+      <h1 style="font-size: 5.5em; color:DodgerBlue;border:2px solid">{{Moisture}} %</h1>
+        <p style="font-weight:bold;font-size: 2.5em;">Temperature</p><br>
+       <h2 style="font-size: 3.5em;color:DodgerBlue;border:2px solid">{{temperature}} C</h2>
+
+    <p style="font-weight:bold;font-size: 1.8em;">ID 01 : {{nameOne}}</p>
+    <p style="font-weight:bold;font-size: 1.8em;">ID 02 : {{nameTwo}}</p>
+  </ion-card> -->
+  <ion-card style="height:100%">
+      <h1 align="center" class="bold"> {{Name}}</h1>
+      <p align="center" class="ion-1x">Moisture </p>
+      <h1 align="center" class="ion-5x italics blue">{{Moisture}}%</h1>
+        <p align="center" class="ion-1x">Temperature</p>
+       <h2 align="center" class="ion-2x italics blue" >{{temperature}}&#176;C</h2>
+
+    <p align="center" class="ion-1x" >ID 01: {{nameOne}}</p>
+    <p align="center" class="ion-1x" >ID 02: {{nameTwo}}</p>
+  </ion-card>
+</div>
+
+
+ 
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+     <button   ion-button large full (click)="PushToSavePage()">Previous Results</button>
+  <button *ngIf="arr?.length > 0" ion-button large full (click)="shareResults()">Share</button>
+    <p align="center">{{ statusMessage }}</p>
+  </ion-toolbar>
+</ion-footer>
